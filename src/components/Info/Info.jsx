@@ -9,11 +9,20 @@ const Info = () => {
       <InfoCard
         image={card1}
         background={"bg-gradient-to-r from-[#19D3AE] to-[#0FCFEC]"}
+        title={"Opening Hours"}
+        info={"Sunday-Saturday, 8am to 12pm"}
       />
-      <InfoCard image={card2} background={"bg-[#3A4256] text-white"} />
+      <InfoCard
+        image={card2}
+        background={"bg-[#3A4256] text-white"}
+        title={"Visit our location"}
+        info={"Brooklyn, NY 10036, United States"}
+      />
       <InfoCard
         image={card3}
         background={"bg-gradient-to-r from-[#19D3AE] to-[#0FCFEC]"}
+        title={"Contact us now"}
+        info={"+000 123 456789"}
       />
     </div>
   );
