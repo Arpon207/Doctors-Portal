@@ -27,16 +27,10 @@ const links = [
   },
 ];
 
-const active = {
-  backgroundColor: "#3A4256",
-  color: "white",
-  borderRadius: ".5rem",
-};
-
 const Navlinks = (
   <>
     {links.map(({ path, name }, i) => (
-      <li>
+      <li key={i}>
         <NavLink
           className={({ isActive }) =>
             isActive ? "bg-[#3A4256] text-white rounded" : undefined

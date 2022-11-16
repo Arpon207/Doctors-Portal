@@ -3,7 +3,7 @@ import Navlinks from "../../constants/Navlinks";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100 justify-between w-11/12 mx-auto">
+    <div className="navbar bg-base-100 justify-between w-full mx-auto fixed top-0 lg:px-20">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
