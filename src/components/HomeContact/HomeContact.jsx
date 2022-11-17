@@ -1,6 +1,6 @@
 const HomeContact = () => {
   return (
-    <div className="bg-[url('/src/assets/images/appointment.png')] flex justify-center items-center py-20 mb-20">
+    <div className="bg-[url('/src/assets/images/appointment.png')] flex justify-center items-center py-20">
       <form className="lg:w-2/6">
         <h3 className="text-2xl text-center text-color1 font-medium">
           Contact Us
@@ -26,6 +26,11 @@ const HomeContact = () => {
             className="textarea text-lg w-full max-w-xs lg:max-w-none resize-none"
             placeholder="Your message"
           ></textarea>
+          <input
+            type="submit"
+            value="Submit"
+            className="btn bg-gradient-to-r from-[#19D3AE] to-[#0FCFEC] px-10"
+          />
         </div>
       </form>
     </div>
