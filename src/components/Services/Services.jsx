@@ -15,9 +15,9 @@ const Services = () => {
         <ServiceCard image={service3} title={"Teeth Whitening"} />
       </div>
       <div className="hero min-h-screen lg:w-3/4 mx-auto mt-20">
-        <div className="hero-content flex-col lg:flex-row-reverse lg:gap-20">
+        <div className="hero-content flex-col-reverse lg:flex-row-reverse lg:gap-20">
           <div className="text-left">
-            <h1 className="text-5xl font-bold text-color2">
+            <h1 className="text-4xl lg:text-5xl font-bold text-color2">
               Exceptional Dental
               <br /> Care, on Your Terms
             </h1>
