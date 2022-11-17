@@ -1,4 +1,3 @@
-import React from "react";
 import doctor from "../../assets/images/doctor-small.png";
 
 const MakeAppointment = () => {
