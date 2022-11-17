@@ -10,14 +10,14 @@ const testimonials = [
       "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
   },
   {
-    name: "Henry Cavil",
+    name: "Sarah Jane",
     address: "New York",
     avatar: people2,
     testimonial:
       "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
   },
   {
-    name: "Winson Herry",
+    name: "Elizabeth Victoria",
     address: "NewBurgh",
     avatar: people3,
     testimonial:

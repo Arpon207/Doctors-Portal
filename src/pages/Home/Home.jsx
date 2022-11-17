@@ -1,4 +1,5 @@
 import Banner from "../../components/Banner/Banner";
+import HomeContact from "../../components/HomeContact/HomeContact";
 import Info from "../../components/Info/Info";
 import MakeAppointment from "../../components/MakeAppointment/MakeAppointment";
 import Services from "../../components/Services/Services";
@@ -11,6 +12,7 @@ const Home = () => (
     <Services />
     <MakeAppointment />
     <Testimonials />
+    <HomeContact />
   </>
 );
 
