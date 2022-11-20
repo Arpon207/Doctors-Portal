@@ -1,6 +1,6 @@
-import card1 from "../../assets/icons/clock.svg";
-import card2 from "../../assets/icons/marker.svg";
-import card3 from "../../assets/icons/phone.svg";
+import card1 from "../../../assets/icons/clock.svg";
+import card2 from "../../../assets/icons/marker.svg";
+import card3 from "../../../assets/icons/phone.svg";
 import InfoCard from "./InfoCard";
 
 const Info = () => {

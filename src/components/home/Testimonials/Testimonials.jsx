@@ -1,5 +1,5 @@
-import logo from "../../assets/icons/quote.svg";
-import testimonials from "../../constants/testimonials";
+import logo from "../../../assets/icons/quote.svg";
+import testimonials from "../../../constants/testimonials";
 import TestimonialCard from "./TestimonialCard";
 
 const Testimonials = () => {

@@ -1,4 +1,4 @@
-import doctor from "../../assets/images/doctor-small.png";
+import doctor from "../../../assets/images/doctor-small.png";
 
 const MakeAppointment = () => {
   return (

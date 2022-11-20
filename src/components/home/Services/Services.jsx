@@ -1,8 +1,8 @@
 import ServiceCard from "./ServiceCard";
-import service1 from "../../assets/images/fluoride.png";
-import service2 from "../../assets/images/cavity.png";
-import service3 from "../../assets/images/whitening.png";
-import treatment from "../../assets/images/treatment.png";
+import service1 from "../../../assets/images/fluoride.png";
+import service2 from "../../../assets/images/cavity.png";
+import service3 from "../../../assets/images/whitening.png";
+import treatment from "../../../assets/images/treatment.png";
 
 const Services = () => {
   return (
