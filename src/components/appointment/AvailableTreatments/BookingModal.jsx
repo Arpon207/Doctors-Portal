@@ -14,6 +14,7 @@ const BookingModal = ({ selectedTreatment, setSelectedTreatment, date }) => {
     };
     setSelectedTreatment(null);
   };
+
   return (
     <div>
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
