@@ -4,6 +4,7 @@ import Services from "../components/home/Services/Services";
 import MakeAppointment from "../components/home/MakeAppointment/MakeAppointment";
 import Testimonials from "../components/home/Testimonials/Testimonials";
 import HomeContact from "../components/home/HomeContact/HomeContact";
+import Footer from "./../components/shared/Footer/Footer";
 
 const Home = () => (
   <>
@@ -13,6 +14,7 @@ const Home = () => (
     <MakeAppointment />
     <Testimonials />
     <HomeContact />
+    <Footer />
   </>
 );
 

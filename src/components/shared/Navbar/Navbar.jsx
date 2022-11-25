@@ -1,7 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
-import Navlinks from "../../../constants/Navlinks";
+import Navlinks from "./Navlinks";
+import { auth } from "./../../../Firebase/firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Navbar = () => {
+  const [user] = useAuthState(auth);
   return (
     <div className="navbar bg-base-100 justify-between w-full mx-auto fixed top-0 lg:px-20 z-50">
       <div className="navbar-start">
@@ -26,7 +29,7 @@ const Navbar = () => {
             tabIndex="0"
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            {Navlinks}
+            <Navlinks />
           </ul>
         </div>
         <Link to={"/"} className="btn btn-ghost normal-case text-xl">
@@ -34,7 +37,9 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex ">
-        <ul className="menu menu-horizontal p-0">{Navlinks}</ul>
+        <ul className="menu menu-horizontal p-0">
+          <Navlinks />
+        </ul>
       </div>
     </div>
   );
