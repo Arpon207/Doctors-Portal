@@ -1,21 +1,36 @@
 import { format } from "date-fns";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./../../../Firebase/firebase.init";
+import { fetchData } from "./../../../axios";
 
-const BookingModal = ({ selectedTreatment, setSelectedTreatment, date }) => {
+const BookingModal = ({
+  selectedTreatment,
+  setSelectedTreatment,
+  date,
+  refetch,
+  setBooked,
+}) => {
   const [user] = useAuthState(auth);
-  const { title, slots } = selectedTreatment;
-  const onSubmit = (e) => {
+  const { _id, name, slots } = selectedTreatment;
+  const onSubmit = async (e) => {
     e.preventDefault();
     const booking = {
-      treatment: title,
-      date: date,
+      treatment_id: _id,
+      treatment: name,
+      date: format(date, "MMMM dd, yyyy"),
       slot: e.target.slot.value,
-      name: e.target.name.value,
+      patientName: user?.displayName,
+      patientEmail: e.target.email.value,
       phone: e.target.phone.value,
-      email: e.target.email.value,
     };
-    setSelectedTreatment(null);
+    if (booking) {
+      const { data } = await fetchData.post("/bookings/add", { booking });
+      if (data) {
+        refetch();
+        setSelectedTreatment(null);
+        setBooked(data);
+      }
+    }
   };
 
   return (
@@ -29,7 +44,7 @@ const BookingModal = ({ selectedTreatment, setSelectedTreatment, date }) => {
           >
             ✕
           </label>
-          <h3 className="font-bold text-lg">{title}</h3>
+          <h3 className="font-bold text-lg">{name}</h3>
           <form onSubmit={onSubmit}>
             <input
               type="text"
@@ -63,9 +78,10 @@ const BookingModal = ({ selectedTreatment, setSelectedTreatment, date }) => {
             />
             <input
               name="phone"
-              type="text"
+              type="number"
               placeholder="Phone Number"
               className="input input-bordered w-full mt-5 "
+              required
             />
             <input type="submit" className="btn w-full mt-5" value={"SUBMIT"} />
           </form>
