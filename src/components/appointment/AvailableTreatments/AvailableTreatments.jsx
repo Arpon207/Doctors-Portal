@@ -8,11 +8,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./../../../Firebase/firebase.init";
 import { fetchData } from "../../../axios";
 import BookingSucessModal from "./BookingSucessModal";
+import useBookings from "./../../../hooks/useBookings";
 
 const AvailableTreatments = ({ date }) => {
   const [user] = useAuthState(auth);
   const [selectedTreatment, setSelectedTreatment] = useState(null);
   const [booked, setBooked] = useState(false);
+
+  const formatedDate = format(date, "MMMM dd, yyyy");
 
   const getTreatments = () => {
     return fetchData.get(
@@ -26,15 +29,9 @@ const AvailableTreatments = ({ date }) => {
     }
   }, [booked]);
 
-  const getBookings = () => {
-    return fetchData.get(
-      `/bookings?date=${format(date, "MMMM dd, yyyy")}&email=${user?.email}`
-    );
-  };
-
   const { data } = useQuery(["treatments", date], getTreatments);
 
-  const { data: bookings, refetch } = useQuery(["bookings", date], getBookings);
+  const { bookings, refetch } = useBookings({ formatedDate, user });
 
   return (
     <div className="mt-20 ">

@@ -6,11 +6,14 @@ import { auth } from "./../Firebase/firebase.init";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 import { useEffect } from "react";
 import Loading from "../components/Loading/Loading";
+import useToken from "./../hooks/useToken";
 
 const Signup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile] = useUpdateProfile(auth);
+
+  const [token] = useToken(user);
 
   const {
     register,
@@ -31,10 +34,10 @@ const Signup = () => {
   };
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user]);
+  }, [token]);
 
   let firebaseError;
   if (error?.code === "auth/email-already-in-use") {

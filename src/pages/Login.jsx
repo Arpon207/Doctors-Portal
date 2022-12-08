@@ -8,6 +8,7 @@ import Loading from "../components/Loading/Loading";
 import ResetPasswordModal from "../components/ResetPassword/ResetPasswordModal";
 import ResetPassword from "./../components/ResetPassword/ResetPassword";
 import logo from "../assets/icons/check-mark.png";
+import useToken from "./../hooks/useToken";
 
 const Login = () => {
   const [isShow, setIsShow] = useState(false);
@@ -16,6 +17,8 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
 
   const [showModal, setShowModal] = useState(false);
+
+  const [token] = useToken(user);
 
   const {
     register,
@@ -34,10 +37,10 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user]);
+  }, [token]);
 
   useEffect(() => {
     switch (error?.code) {

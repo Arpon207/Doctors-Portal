@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../Firebase/firebase.init";
 import { signOut } from "firebase/auth";
@@ -37,10 +37,17 @@ const Navlinks = () => {
           </a>
           <ul className="p-2 bg-base-100">
             <li>
-              <a>My Appointments</a>
+              <Link to={"/dashboard"}>My Appointments</Link>
             </li>
             <li>
-              <a onClick={() => signOut(auth)}>Signout</a>
+              <a
+                onClick={() => {
+                  signOut(auth);
+                  localStorage.removeItem("accessToken");
+                }}
+              >
+                Signout
+              </a>
             </li>
           </ul>
         </li>
