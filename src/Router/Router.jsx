@@ -7,6 +7,8 @@ import RequireAuth from "../pages/RequireAuth";
 import Dashboard from "../pages/Dashboard";
 import MyAppointments from "../components/Dashboard/MyAppointments";
 import MyReviews from "./../components/Dashboard/MyReviews";
+import Users from "./../components/Dashboard/Users";
+import RequireAdmin from "../pages/RequireAdmin";
 const Router = () => {
   return (
     <Routes>
@@ -34,6 +36,14 @@ const Router = () => {
       >
         <Route index element={<MyAppointments />} />
         <Route path="my-reviews" element={<MyReviews />} />
+        <Route
+          path="users"
+          element={
+            <RequireAdmin>
+              <Users />
+            </RequireAdmin>
+          }
+        />
       </Route>
     </Routes>
   );

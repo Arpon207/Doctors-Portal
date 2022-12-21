@@ -37,7 +37,7 @@ const Navlinks = () => {
           </a>
           <ul className="p-2 bg-base-100">
             <li>
-              <Link to={"/dashboard"}>My Appointments</Link>
+              <Link to={"/dashboard"}>Dashboard</Link>
             </li>
             <li>
               <a
