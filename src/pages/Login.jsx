@@ -16,8 +16,6 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  const [showModal, setShowModal] = useState(false);
-
   const [token] = useToken(user);
 
   const {
@@ -56,28 +54,12 @@ const Login = () => {
     }
   }, [error]);
 
-  useEffect(() => {
-    if (showModal === true) {
-      setTimeout(() => {
-        setShowModal(false);
-      }, 3000);
-    }
-  }, [showModal]);
-
   if (loading) {
     return <Loading />;
   }
 
   return (
     <div className="grid place-items-center min-h-screen">
-      <div
-        className={`absolute left-0 right-0 m-auto w-fit bg-color1 z-30 py-3 px-7 rounded transition-all delay-300 ${
-          showModal ? "scale-100 opacity-100" : "scale-0 opacity-0"
-        }`}
-      >
-        <img src={logo} alt="" width={60} />
-        <h1 className="text-md text-center">SENT</h1>
-      </div>
       <div className="card w-96 bg-base-100 lg:shadow-xl p-10">
         <h1 className="text-center text-2xl mb-5">Login</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -147,9 +129,7 @@ const Login = () => {
         <div className="divider">OR</div>
         <SocialLogin from={from} />
       </div>
-      {isShow ? (
-        <ResetPasswordModal setIsShow={setIsShow} setShowModal={setShowModal} />
-      ) : undefined}
+      {isShow ? <ResetPasswordModal setIsShow={setIsShow} /> : undefined}
     </div>
   );
 };

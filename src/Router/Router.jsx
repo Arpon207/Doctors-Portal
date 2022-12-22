@@ -9,6 +9,8 @@ import MyAppointments from "../components/Dashboard/MyAppointments";
 import MyReviews from "./../components/Dashboard/MyReviews";
 import Users from "./../components/Dashboard/Users";
 import RequireAdmin from "../pages/RequireAdmin";
+import AddDoctor from "../components/Dashboard/AddDoctor";
+import ManageDoctors from "./../components/Dashboard/ManageDoctors";
 const Router = () => {
   return (
     <Routes>
@@ -41,6 +43,22 @@ const Router = () => {
           element={
             <RequireAdmin>
               <Users />
+            </RequireAdmin>
+          }
+        />
+        <Route
+          path="add-doctor"
+          element={
+            <RequireAdmin>
+              <AddDoctor />
+            </RequireAdmin>
+          }
+        />
+        <Route
+          path="manage-doctors"
+          element={
+            <RequireAdmin>
+              <ManageDoctors />
             </RequireAdmin>
           }
         />

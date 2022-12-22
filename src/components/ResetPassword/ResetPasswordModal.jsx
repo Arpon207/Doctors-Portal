@@ -3,7 +3,7 @@ import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
 import { auth } from "./../../Firebase/firebase.init";
 import { toast } from "react-toastify";
 
-const ResetPasswordModal = ({ setIsShow, setShowModal }) => {
+const ResetPasswordModal = ({ setIsShow }) => {
   const [sendPasswordResetEmail, sending, error] =
     useSendPasswordResetEmail(auth);
 
@@ -13,7 +13,7 @@ const ResetPasswordModal = ({ setIsShow, setShowModal }) => {
     const success = await sendPasswordResetEmail(email);
     if (success) {
       setIsShow(false);
-      setShowModal(true);
+      toast.success("Email sent.");
     }
   };
 

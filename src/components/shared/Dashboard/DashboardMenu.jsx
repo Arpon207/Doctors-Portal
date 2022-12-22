@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import useAdmin from "./../../../hooks/useAdmin";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./../../../Firebase/firebase.init";
 
 const DashboardMenu = () => {
+  const [user] = useAuthState(auth);
+  const { data } = useAdmin(user);
   return (
     <div className="dropdown lg:hidden">
       <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -29,6 +34,19 @@ const DashboardMenu = () => {
         <li>
           <Link to={"/dashboard/my-reviews"}>My Reviews</Link>
         </li>
+        {data?.admin ? (
+          <>
+            <li>
+              <Link to={"/dashboard/users"}>All Users</Link>
+            </li>
+            <li>
+              <Link to={"/dashboard/add-doctor"}>Add Doctor</Link>
+            </li>
+            <li>
+              <Link to={"/dashboard/manage-doctors"}>Manage Doctors</Link>
+            </li>
+          </>
+        ) : undefined}
       </ul>
     </div>
   );
