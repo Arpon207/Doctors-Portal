@@ -9,11 +9,14 @@ import { auth } from "./../../../Firebase/firebase.init";
 import { fetchData } from "../../../axios";
 import BookingSucessModal from "./BookingSucessModal";
 import useBookings from "./../../../hooks/useBookings";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 
 const AvailableTreatments = ({ date }) => {
   const [user] = useAuthState(auth);
   const [selectedTreatment, setSelectedTreatment] = useState(null);
   const [booked, setBooked] = useState(false);
+
+  const [deletionId, setDeletionId] = useState("");
 
   const formatedDate = format(date, "MMMM dd, yyyy");
 
@@ -45,6 +48,7 @@ const AvailableTreatments = ({ date }) => {
             treatment={treatment}
             setSelectedTreatment={setSelectedTreatment}
             bookings={bookings?.data}
+            setDeletionId={setDeletionId}
           />
         ))}
       </div>
@@ -63,6 +67,9 @@ const AvailableTreatments = ({ date }) => {
           slot={booked.slot}
           treatment={booked.treatment}
         />
+      ) : undefined}
+      {deletionId ? (
+        <DeleteConfirmModal deletionId={deletionId} refetch={refetch} />
       ) : undefined}
     </div>
   );

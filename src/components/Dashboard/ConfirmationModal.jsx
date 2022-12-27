@@ -22,7 +22,8 @@ const ConfirmationModal = ({ selectedDoctor, refetch, setSelectedDoctor }) => {
       <div className="modal modal-bottom sm:modal-middle bg-transparent">
         <div className="modal-box">
           <h3 className="font-bold text-lg text-center">
-            Are you sure you want remove <strong>{selectedDoctor.name}</strong>
+            Are you sure you want remove{" "}
+            <strong>{selectedDoctor.name} ?</strong>
           </h3>
           <div className="modal-action flex justify-center">
             <label htmlFor="confirmation-modal" className="btn">

@@ -1,8 +1,16 @@
-const TreatmentCard = ({ treatment, setSelectedTreatment, bookings }) => {
-  const { name, slots } = treatment;
+import { useNavigate } from "react-router-dom";
+import { fetchData } from "./../../../axios";
+const TreatmentCard = ({
+  treatment,
+  setSelectedTreatment,
+  bookings,
+  setDeletionId,
+}) => {
+  const { name, slots, fee } = treatment;
 
   const exists = bookings?.find((booking) => booking.treatment == name);
 
+  const navigate = useNavigate();
   return (
     <div className="card w-full bg-base-100 shadow-xl">
       <div className="card-body text-center">
@@ -32,11 +40,40 @@ const TreatmentCard = ({ treatment, setSelectedTreatment, bookings }) => {
             <p className="text-red text-sm">TRY AGAIN TOMORROW</p>
           </>
         )}
+        <p className="font-semibold">
+          Fee: ${fee}.00{" "}
+          {exists && <small>{!exists?.paid ? "(pending)" : "(paid)"}</small>}
+        </p>
         <div className="card-actions justify-center">
           {exists ? (
-            <button className="btn border-none bg-red">
-              Cancel Appointment
-            </button>
+            <>
+              {!exists?.paid ? (
+                <>
+                  <label
+                    htmlFor="appointment-delete-modal"
+                    className="btn btn-error text-white"
+                    onClick={() => setDeletionId(exists?._id)}
+                  >
+                    Cancel Appointment
+                  </label>
+                  <button
+                    className="btn border-none bg-gradient-to-r from-[#19D3AE] to-[#0FCFEC]"
+                    onClick={() =>
+                      navigate(`/dashboard/payment/${exists?._id}`)
+                    }
+                  >
+                    Payment
+                  </button>
+                </>
+              ) : (
+                <label
+                  className="btn border-none bg-gradient-to-r from-[#19D3AE] to-[#0FCFEC]"
+                  disabled
+                >
+                  Booked
+                </label>
+              )}
+            </>
           ) : (
             <label
               htmlFor="booking-modal"

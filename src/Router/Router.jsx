@@ -11,6 +11,7 @@ import Users from "./../components/Dashboard/Users";
 import RequireAdmin from "../pages/RequireAdmin";
 import AddDoctor from "../components/Dashboard/AddDoctor";
 import ManageDoctors from "./../components/Dashboard/ManageDoctors";
+import Payment from "./../components/Dashboard/Payment";
 const Router = () => {
   return (
     <Routes>
@@ -38,6 +39,7 @@ const Router = () => {
       >
         <Route index element={<MyAppointments />} />
         <Route path="my-reviews" element={<MyReviews />} />
+        <Route path="payment/:id" element={<Payment />} />
         <Route
           path="users"
           element={

@@ -11,7 +11,7 @@ const BookingModal = ({
   setBooked,
 }) => {
   const [user] = useAuthState(auth);
-  const { _id, name, slots } = selectedTreatment;
+  const { _id, name, slots, fee } = selectedTreatment;
   const onSubmit = async (e) => {
     e.preventDefault();
     const booking = {
@@ -22,6 +22,7 @@ const BookingModal = ({
       patientName: user?.displayName,
       patientEmail: e.target.email.value,
       phone: e.target.phone.value,
+      fee: parseInt(fee),
     };
     if (booking) {
       const { data } = await fetchData.post("/bookings/add", { booking });
@@ -45,6 +46,7 @@ const BookingModal = ({
             ✕
           </label>
           <h3 className="font-bold text-lg">{name}</h3>
+          <h3 className="font-semibold text-md">Fee: ${fee}.00</h3>
           <form onSubmit={onSubmit}>
             <input
               type="text"

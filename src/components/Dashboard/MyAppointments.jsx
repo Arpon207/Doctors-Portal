@@ -8,10 +8,12 @@ import { fetchData } from "./../../axios";
 import DashboardMenu from "../shared/Dashboard/DashboardMenu";
 import useBookings from "./../../hooks/useBookings";
 import Loading from "./../Loading/Loading";
+import { useNavigate } from "react-router-dom";
 const MyAppointments = () => {
   const [user] = useAuthState(auth);
   const [date, setDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const formatedDate = format(date, "MMMM dd, yyyy");
 
@@ -49,18 +51,54 @@ const MyAppointments = () => {
                 <th></th>
                 <th>NAME</th>
                 <th>SERVICE</th>
-                <th>TIME</th>
+                <th className="text-center">TIME</th>
+                <th className="text-center">Payment</th>
               </tr>
             </thead>
             <tbody>
-              {bookings?.data.map(({ patientName, treatment, date }, index) => (
-                <tr key={index}>
-                  <th>{index + 1}</th>
-                  <td>{patientName}</td>
-                  <td>{treatment}</td>
-                  <td>{date}</td>
-                </tr>
-              ))}
+              {bookings?.data.map(
+                (
+                  {
+                    _id,
+                    patientName,
+                    treatment,
+                    date,
+                    paid,
+                    transactionId,
+                    slot,
+                  },
+                  index
+                ) => (
+                  <tr key={index}>
+                    <th>{index + 1}</th>
+                    <td>{patientName}</td>
+                    <td>{treatment}</td>
+                    <td className="text-center">
+                      {date}, {slot}{" "}
+                    </td>
+                    <td className="text-center ">
+                      {!paid ? (
+                        <button
+                          className="btn"
+                          onClick={() => navigate(`/dashboard/payment/${_id}`)}
+                        >
+                          Pay
+                        </button>
+                      ) : (
+                        <>
+                          <p className="text-success">Paid</p>
+                          <p>
+                            Transaction_id:{" "}
+                            <span className="text-success">
+                              {transactionId}
+                            </span>{" "}
+                          </p>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                )
+              )}
             </tbody>
           </table>
         </div>

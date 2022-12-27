@@ -18,7 +18,7 @@ const BookingSucessModal = ({ date, slot, treatment }) => {
           </label>
           <div className="p-10">
             <p className="text-xl">
-              Appointment for{" "}
+              Appointment is set for{" "}
               <strong className="text-color1">{treatment}</strong> is set on{" "}
               {date} at {slot}.
             </p>
